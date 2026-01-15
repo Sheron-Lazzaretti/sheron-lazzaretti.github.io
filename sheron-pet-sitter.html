@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheron Pet Sitter | Gestão de Focinhos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-principal: #5c9ead;
+            --azul-claro: #e3f2fd;
+            --rosa-principal: #ec9eb6;
+            --rosa-claro: #fce4ec;
+            --texto-escuro: #4a4a4a;
+            --texto-suave: #666;
+            --branco: #ffffff;
+            --sombra: 0 10px 30px rgba(92, 158, 173, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--texto-escuro);
+            background-color: #fafafa;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--azul-principal);
+        }
+
+        /* --- CABEÇALHO FIXO --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            border-bottom: 3px solid var(--azul-claro);
+        }
+
+        .logo-nav {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-principal);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-nav span {
+            color: var(--rosa-principal);
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-links a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .menu-links a:hover {
+            color: var(--rosa-principal);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, var(--azul-claro) 0%, #fafafa 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            line-height: 1.3;
+        }
+
+        .main-logo-img {
+            width: 30%;
+            min-width: 200px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        /* --- SEÇÕES GERAIS --- */
+        section {
+            padding: 60px 10%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+/* --- DIRETORIA (GRID COM AVATAR) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.team-card {
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--sombra);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border: 2px solid transparent;
+    transition: transform 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--rosa-principal);
+}
+
+.avatar-container {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--azul-claro);
+    background-color: #eee;
+}
+
+.card-content {
+    flex-grow: 1;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.role-badge {
+    display: inline-block;
+    background: var(--azul-claro);
+    color: var(--azul-principal);
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .team-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+        /* --- CULTURA --- */
+        .culture-box {
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+        }
+
+        .culture-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 4px solid var(--azul-principal);
+        }
+
+        /* --- DORES E MEDOS --- */
+.pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.pain-card {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pain-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--rosa-principal);
+}
+
+@media (max-width: 768px) {
+    .pain-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .pain-card {
+        padding: 20px;
+    }
+}
+
+        /* --- SERVIÇOS --- */
+        .service-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+            margin-bottom: 25px;
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            color: var(--azul-principal);
+            min-width: 50px;
+        }
+
+        .service-list li {
+            list-style: none;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '🐾';
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- FAQ --- */
+        details {
+            background: var(--branco);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--azul-principal);
+            list-style: none;
+            position: relative;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details p {
+            padding: 0 20px 20px 20px;
+            color: var(--texto-suave);
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            background: var(--azul-principal);
+            color: var(--branco);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: var(--branco);
+            color: var(--azul-principal);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- FOOTER --- */
+        .footer-final {
+            background-color: #f0f0f0;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--texto-suave);
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-final .tagline {
+            margin-top: 5px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            color: var(--azul-principal);
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-links { display: none; }
+            .hero h1 { font-size: 1.6rem; }
+            .service-row { flex-direction: column; }
+            .team-card { flex-direction: column; text-align: center; align-items: center; }
+        }
+
+/* --- SEÇÃO DE DEPOIMENTOS --- */
+.testimonials-section {
+    padding: 60px 10%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #fafafa 0%, var(--azul-claro) 100%);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--sombra);
+    border: 2px solid transparent;
+    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--rosa-principal);
+}
+
+.pet-photo-container {
+    margin-bottom: 20px;
+}
+
+.pet-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 4px solid var(--rosa-claro);
+    box-shadow: 0 5px 15px rgba(236, 158, 182, 0.3);
+}
+
+.pet-name {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+    margin-bottom: 15px;
+}
+
+.testimonial-text {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+    position: relative;
+    padding: 0 10px;
+}
+
+.testimonial-text::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--rosa-claro);
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-family: Georgia, serif;
+}
+
+.tutor-name {
+    font-weight: 600;
+    color: var(--texto-escuro);
+    font-size: 0.9rem;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 2px solid var(--azul-claro);
+    width: 100%;
+}
+
+.tutor-name::before {
+    content: '— ';
+    color: var(--rosa-principal);
+}
+
+/* --- SEÇÃO DE BOTÃO FORMULÁRIO --- */
+/* --- SEÇÃO DE BOTÃO FORMULÁRIO --- */
+.form-cta-section {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--rosa-principal) 100%);
+    padding: 70px 0;
+    text-align: center;
+    margin: 60px 0 0 0;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-cta-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.form-cta-section h2 {
+    color: var(--branco);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form-cta-section p {
+    color: var(--branco);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.btn-form-cadastro {
+    display: inline-block;
+    background: var(--branco);
+    color: var(--azul-principal);
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.btn-form-cadastro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-form-cadastro i {
+    margin-right: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-cta-content {
+        padding: 0 20px;
+    }
+
+    .form-cta-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-cta-section p {
+        font-size: 1rem;
+    }
+
+    .btn-form-cadastro {
+        padding: 15px 35px;
+        font-size: 0.95rem;
+    }
+}
+
+/* --- O QUE EU FAÇO --- */
+.about-service {
+    background: var(--branco);
+    padding: 60px 10%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.about-service-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-service h2 {
+    font-size: 2rem;
+    color: var(--azul-principal);
+    margin-bottom: 30px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.service-intro {
+    background: linear-gradient(135deg, var(--azul-claro) 0%, var(--rosa-claro) 100%);
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--azul-principal);
+}
+
+.service-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--texto-escuro);
+    margin-bottom: 15px;
+}
+
+.service-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-text {
+    color: var(--rosa-principal);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .about-service h2 {
+        font-size: 1.6rem;
+    }
+
+    .service-intro {
+        padding: 25px;
+    }
+
+    .service-intro p {
+        font-size: 1rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-nav">Sheron <span>Pet Sitter</span></a>
+        <div class="menu-links">
+            <a href="#diretoria">Diretoria</a>
+            <a href="#cultura">Cultura</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Viaje com o coração tranquilo enquanto o seu melhor amigo se diverte no lugar que ele mais ama: a casa dele</h1>
+        <img src="https://lh3.googleusercontent.com/u/0/d/1dddlxZ7lJIZNbo0-vMOwOwWFCnLO13a3" alt="Sheron Pet Sitter Logo" class="main-logo-img">
+    </header>
+
+    <section id="dores">
+        <div class="section-title">
+            <h2>💜 "Eu sei exatamente o que passa na sua cabeça..."</h2>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <h3>"Será que ele vai se sentir abandonado?"</h3>
+                <p>Eles têm sentimentos. Meu foco não é só nutrir, é dar presença, conversar e fazer companhia para que saibam que você volta.</p>
+            </div>
+            <div class="pain-card">
+                <h3>"Ele fica estressado em hotel..."</h3>
+                <p>No atendimento a domicílio, o território e o cheiro são dele. O estresse vai a zero no conforto da própria caminha.</p>
+            </div>
+            <div class="pain-card">
+                <h3>"E se esquecerem do remédio?"</h3>
+                <p>A segurança é o protocolo nº 1. Sigo cada detalhe da rotina: medicação na hora, água fresca e banheiro impecável.</p>
+            </div>
+            <div class="pain-card">
+                <h3>"Como vou saber se ele está bem?"</h3>
+                <p>Você recebe o "Relatório de Felicidade" em tempo real com fotos e vídeos. É como se você estivesse lá espiando.</p>
+            </div>
+            <div class="pain-card">
+                <h3>"E se ele adoecer enquanto estou fora?"</h3>
+                <p>Tenho experiência para identificar sinais de alerta. Você será avisado na hora e, se necessário, levo ao veterinário de sua confiança imediatamente.</p>
+            </div>
+            <div class="pain-card">
+                <h3>"Não consigo confiar em qualquer pessoa..."</h3>
+                <p>E você não deveria mesmo! Por isso ofereço uma reunião prévia sem compromisso. Você só contrata se sentir segurança e conexão verdadeiras.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-weight: bold; color: var(--azul-principal);">Meu trabalho é garantir que ele sinta saudade — e não solidão.</p>
+    </section>
+
+<!-- SEÇÃO O QUE EU FAÇO -->
+<section class="about-service">
+    <div class="about-service-content">
+        <h2>🐾 O que eu faço para resolver isso para seu pet</h2>
+
+        <div class="service-intro">
+            <p>
+                Sou <span class="highlight-text">Pet Sitter profissional</span> e ofereço cuidado individualizado para seu pet <strong>no conforto da própria casa dele</strong>. Sem estresse de transporte, sem ambiente desconhecido, sem adaptação forçada.
+            </p>
+            <p>
+                Meu trabalho vai muito além de garantir água e comida. Eu <span class="highlight-text">faço companhia, brinco, converso, respeito o tempo de cada bichinho</span> e sigo rigorosamente a rotina que você estabeleceu — medicações, horários, preferências e até as manias mais específicas.
+            </p>
+            <p>
+                Você viaja ou trabalha tranquilo enquanto recebe <strong>atualizações em tempo real</strong> com fotos e vídeos. É como se você estivesse junto, acompanhando cada momento de pertinho. Seu pet fica feliz, seguro e bem cuidado. <span class="highlight-text">Você volta e encontra tudo exatamente como deixou — só que com muito mais fotos pra matar a saudade.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section id="cultura">
+        <div class="section-title">
+            <h2>✨ Nossa Cultura Organizacional</h2>
+        </div>
+        <div class="culture-box">
+            <div class="culture-item"><strong>Missão:</strong> Proporcionar paz de espírito aos tutores e alegria genuína aos pets em seu habitat natural.</div>
+            <div class="culture-item"><strong>Metas:</strong> Alcançar o nível de "ronrom" máximo e garantir que cada rabo abane de felicidade ao me ver chegar.</div>
+            <div class="culture-item">
+                <strong>Valores:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Respeito à Individualidade: Respeitamos o tempo e o espaço de cada pet.</li>
+                    <li>Transparência Total: Relatórios honestos e fotos em tempo real.</li>
+                    <li>Amor Incondicional: Cuidado rigoroso conforme as exigências da nossa CEO.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="section-title">
+            <h2>📋 Nossos Protocolos de Cuidado</h2>
+        </div>
+        <div class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-stethoscope"></i></div>
+            <div class="service-content">
+                <h3>🛡️ Pilar de Saúde e Higiene</h3>
+                <ul class="service-list">
+                    <li><strong>Gestão Alimentar:</strong> Higienização e reposição seguindo orientações de horários.</li>
+                    <li><strong>Hidratação Monitorada:</strong> Troca total da água para mantê-la sempre fresca.</li>
+                    <li><strong>Manutenção de Ambiente:</strong> Limpeza criteriosa de liteiras, tapetes ou viveiros.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-paw"></i></div>
+            <div class="service-content">
+                <h3>🧩 Estímulo e Bem-Estar Mental</h3>
+                <ul class="service-list">
+                    <li><strong>Enriquecimento Ambiental:</strong> Dinâmicas de brincadeiras específicas para cada espécie.</li>
+                    <li><strong>Suporte Emocional:</strong> Interação dedicada para que o animal se sinta acolhido.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
+            <div class="service-content">
+                <h3>📲 Transparência Digital</h3>
+                <ul class="service-list">
+                    <li><strong>Relatórios Diários:</strong> Feedback detalhado sobre comportamento e bem-estar.</li>
+                    <li><strong>Janela de Visualização:</strong> Envio de mídias para sua total tranquilidade.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="diretoria">
+        <div class="section-title">
+            <h2>🏛️ Estrutura Organizacional e Governança</h2>
+            <p>A Sheron Pet Sitter opera sob um regime de gestão compartilhada entre humanos e focinhos.</p>
+        </div>
+
+        <p class="intro-text" style="text-align: center; margin-bottom: 40px;">
+            A execução técnica é de responsabilidade da colaboradora humana (Sheron), enquanto o planejamento estratégico e a auditoria de processos são integralmente conduzidos pelo Conselho Superior de Focinhos.
+        </p>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1i2gaC6BYO0ywSHinycQleOJS5FHQOSQ9" alt="Jade" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">CEO</span>
+                    <h3>Jade</h3>
+                    <p>Gestora de temperamento autocrático e baixa tolerância a falhas operacionais. Responsável pela governança corporativa e rigor técnico. Sua gestão é pautada pela excelência e olhares de julgamento.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1fbnjAC52S-lZTqqA78GsjsZ8B4s5k2w1" alt="Charlotte" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Gestão de RH</span>
+                    <h3>Charlotte</h3>
+                    <p>Diretora de Capital Humano. Especialista em análise comportamental, garante que a colaboradora humana mantenha os KPIs de empatia e paciência exigidos pela espécie.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1GdIGurC8ze6vS5QyxHcys--h_kS-Frcr" alt="Dimmy" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Higienização</span>
+                    <h3>Dimmy</h3>
+                    <p>Único representante canino na diretoria. Fiscaliza rigorosamente os protocolos de sanitização e possui certificação avançada em Inspeção de Superfícies via Olfato.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1ZbLnL7dtWMGqW2ui2jEOtg9Kq0D_waXe" alt="Louis" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Logística</span>
+                    <h3>Louis</h3>
+                    <p>Especialista em gestão de fluxos. Monitora o inventário de suprimentos e a pontualidade das rotas, focando no desperdício zero e otimização de deslocamento.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1nsMIwP1GROwKFKEW71P9dIDeDGzW-84T" alt="George" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Analista de Materiais</span>
+                    <h3>George</h3>
+                    <p>Responsável pela auditoria de superfícies de repouso. Conduz testes de estresse em sofás e frestas de sol para garantir o Manual de Conforto do Cliente.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/18103X8fgga3OsZMQIYkAby-4ifzWr9mP" alt="Charlie" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Pesquisa & Desenvolvimento</span>
+                    <h3>Charlie</h3>
+                    <p>Lidera a divisão de Inovação e Brinquedos. Testa a durabilidade de materiais e novas dinâmicas de caça para manter o portfólio de diversão sempre atualizado.</p>
+                </div>
+            </div>
+
+            <div class="team-card sheron-card">
+                <div class="avatar-container">
+                    <img src="https://lh3.googleusercontent.com/u/0/d/1prYI5d8LgfsL7pSIEKeGRq1unH_0FpdF" alt="Sheron" class="avatar">
+                </div>
+                <div class="card-content">
+                    <span class="role-badge">Operacional</span>
+                    <h3>Sheron</h3>
+                    <p>Única representante Homo sapiens. Interface entre tutores e o universo pet. Responsável pela execução braçal, sistema de transporte e logística de chaves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- SEÇÃO DE DEPOIMENTOS -->
+<section class="testimonials-section">
+    <div class="section-title">
+        <h2>O que os tutores dizem 🐾</h2>
+        <p>Depoimentos reais de quem confia na Sheron Pet Sitter</p>
+    </div>
+
+    <div class="testimonials-grid">
+        <!-- Depoimento 1 - Raposa -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1LNAsmb-2C68SqNdA2m95xAtuxlosJCcD" alt="Raposa" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Raposa</h3>
+            <p class="testimonial-text">
+                A Sheron é super querida, e tem o maior jeito pra lidar com os animais, realmente ama o que faz. Me deu atualizações da Raposa sempre que solicitado, é responsável e cumpre com os horários e com o combinado. Me senti super segura em deixar a Raposa com ela, quando voltei estava tudo em ordem e a Raposa super feliz. Com certeza vou contratar mais vezes. Super indico!
+            </p>
+            <p class="tutor-name">Amanda</p>
+        </div>
+
+        <!-- Depoimento 2 - Mel -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1w8vGy1nby3dkKUxYG19a56n7Pthk9znx" alt="Mel" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Mel</h3>
+            <p class="testimonial-text">
+                A Sheron cuidou da Mel com tanto carinho e dedicação que fiquei completamente tranquila. Dá para perceber o quanto ela ama o que faz e o cuidado verdadeiro em cada detalhe. Sempre atenciosa, responsável e carinhosa, me passou muita confiança desde o início. A Mel foi muito bem cuidada e com certeza voltaria a deixar com a Sheron de olhos fechados. Recomendo com todo o coração!
+            </p>
+            <p class="tutor-name">Edinéia</p>
+        </div>
+
+        <!-- Depoimento 3 - Verme, Petrúquio e Negueba -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/13B-cKrjZmtgOav_oJo7rfxw1A8X8wZ3q" alt="Verme, Petrúquio e Negueba" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1zjK1st413f3JIB4eiAO6hj_aXs60D2BU" alt="Verme, Petrúquio e Negueba" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1Xgqk5s3HOGQ4SuZ8TR2CgGq5VCxmK-Ro" alt="Verme, Petrúquio e Negueba" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Verme, Petrúquio e Negueba</h3>
+            <p class="testimonial-text">
+                Quero deixar registrado o quanto me senti segura deixando meus gatos sob os cuidados da Sheron. Desde o início, demonstrou a responsabilidade e o carinho que tem por eles😍Me manteve sempre atualizada sobre como eles estavam. Da pra perceber o quanto ela é atenciosa e comprometida com o que faz. Recomendo de olhos fechados❤️❤️👏🏻
+            </p>
+            <p class="tutor-name">Bruna</p>
+        </div>
+
+        <!-- Depoimento 4 - Luna e Amora -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1DxXaFL39xHdvTRrxNx-3df09ObXyBc0G" alt="Luna e Amora" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1tTCq9Rx5FvGj9tbdYgsW5ucUZ8NFzAlp" alt="Luna e Amora" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Luna e Amora</h3>
+            <p class="testimonial-text">
+                A melhor cuidadora dos pets com toda a certeza! Muito atenciosa, responsável e amada pelas minhas filhas de quatro patas. Tenho confiança total no seu trabalho e gratidão pelo cuidado especial que ela tem com a Luna e com a Amora sempre que preciso. As viagens se tornaram mais tranquilas sabendo que elas estão bem cuidadas, e sempre recebo atualizações e fotos diárias pra amenizar a saudade. Indico de olhos fechados!!
+            </p>
+            <p class="tutor-name">Paula</p>
+        </div>
+
+        <!-- Depoimento 5 - Kate -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1W-beURME9y0qQhNqsw63yuvk-Yr-0IMZ" alt="Kate" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Kate</h3>
+            <p class="testimonial-text">
+                Como mamãe da Kate, me sinto muito tranquila em saber que encontrei alguém tão confiável e capacitada pra cuidar da minha gatinha em momentos que preciso viajar e não posso levar ela junto. Muito obrigada Sheron, por toda sua dedicação com nossos bichinhos, mesmo a Kate sendo uma gata de temperamento difícil, com você ela ficou super de boa, foi muito bem cuidada, protegida e alimentada, e voltou pra casa muito tranquila. Fico muito feliz por ter você pra me ajudar nesses momentos, pode ter certeza que contarei com sua ajuda sempre que eu precisar viajar novamente! Eu e a Kate agradecemos de coração ❤️
+            </p>
+            <p class="tutor-name">Marisa</p>
+        </div>
+
+        <!-- Depoimento 6 - Marco Aurélio, Amora e Kitty -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1p3d3Ir103x7F9-CNTD0D0BUGqz-L2k29" alt="Carmem Lúcia" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1W33CX8YKcZldl0obxwca8i05l_FJOUV_" alt="Carmem Lúcia" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1DwnzMMjdayJ3pSlS6cZWkrS-N6kv6Ikb" alt="Carmem Lúcia" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Marco Aurélio, Amora e Kitty</h3>
+            <p class="testimonial-text">
+                A Sheron cuidou muito bem dos meus animais. Precisei mais de uma vez e deu tudo certo. Super indico!
+            </p>
+            <p class="tutor-name">Carmem Lúcia</p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO BOTÃO FORMULÁRIO -->
+<section class="form-cta-section">
+    <h2>Seu pet merece o melhor cuidado enquanto você está fora!</h2>
+    <p>Preencha o formulário com os dados do seu pet e as informações da hospedagem. Vamos planejar tudo com carinho!</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPokXiA2akbW8-Ty1fhZhZ9q6fSv94Xs4TPNQC7AZOWmFNzg/viewform" target="_blank" class="btn-form-cadastro">
+        <i class="fas fa-paw"></i> Solicitar Orçamento e Agendar
+    </a>
+</section>
+
+    <section id="faq">
+        <div class="section-title">
+            <h2>💬 Perguntas Frequentes (FAQ)</h2>
+        </div>
+        <details>
+            <summary>1. Você cuida de animais que precisam de medicação?</summary>
+            <p>Sim. Tenho experiência em medicação oral ou tópica, seguindo à risca a prescrição veterinária.</p>
+        </details>
+        <details>
+            <summary>2. E se houver uma emergência de saúde?</summary>
+            <p>Preenchemos um prontuário detalhado com seu veterinário de preferência. Diante de qualquer intercorrência, o contato com você e o profissional é imediato.</p>
+        </details>
+        <details>
+            <summary>3. Como funciona a entrega e devolução das chaves?</summary>
+            <p>A coleta é na visita de cortesia. A devolução é acordada conforme sua conveniência (mãos, portaria ou vizinho).</p>
+        </details>
+        <details>
+            <summary>4. Você atende animais bravos ou ariscos?</summary>
+            <p>Realizamos uma avaliação. Com paciência e técnica, respeitamos o espaço e buscamos conquistar a confiança.</p>
+        </details>
+        <details>
+            <summary>5. E se minha viagem atrasar?</summary>
+            <p>Basta comunicar. Estenderemos as visitas até que você retorne com segurança.</p>
+        </details>
+        <details>
+            <summary>6. Você faz passeios na rua?</summary>
+            <p>Foco no Pet Sitting. O passeio pode ser incluído se o animal já for acostumado e o trajeto for seguro.</p>
+        </details>
+        <details>
+            <summary>7. Quais espécies você atende?</summary>
+            <p>Cães, gatos, aves e roedores, respeitando as individualidades e o manejo de cada espécie.</p>
+        </details>
+        <details>
+            <summary>8. Como sei que você realmente foi à minha casa?</summary>
+            <p>Além de fotos e vídeos, compartilho minha localização atual assim que chego à residência.</p>
+        </details>
+        <details>
+            <summary>9. Você limpa a sujeira que o pet faz?</summary>
+            <p>Sim, a higienização do local e de eventuais acidentes faz parte do protocolo padrão.</p>
+        </details>
+        <details>
+            <summary>10. Posso contratar mais de uma visita por dia?</summary>
+            <p>Sim. Recomendamos ao menos duas para cães, mas a frequência é definida pela necessidade do pet.</p>
+        </details>
+    </section>
+
+    <div class="cta-section">
+        <h2>"Viaje com a consciência leve e o coração tranquilo."</h2>
+        <p>A nossa diretoria está pronta para receber o seu pet no clube dos VIPs.</p>
+        <a href="https://wa.me/5554992061661" class="btn-cta" target="_blank"><i class="fa-brands fa-whatsapp"></i> Fale diretamente comigo, agora</a>
+    </div>
+
+    <footer class="footer-final">
+        <p>&copy; 2026 Sheron Pet Sitter. Todos os direitos reservados.</p>
+        <p class="tagline">Cuidado e carinho sob a supervisão da CEO Jade.</p>
+    </footer>
+
+</body>
+</html>
