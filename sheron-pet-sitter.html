@@ -599,6 +599,46 @@
     }
 }
 
+/* --- BOTÃO INSTAGRAM --- */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: var(--branco);
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 5px 15px rgba(188, 24, 136, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+.instagram-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(188, 24, 136, 0.4);
+}
+
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .instagram-link {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+    }
+
+    .instagram-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -889,9 +929,9 @@
         <!-- Depoimento 6 - Marco Aurélio, Amora e Kitty -->
         <div class="testimonial-card">
             <div class="pet-photo-container">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1p3d3Ir103x7F9-CNTD0D0BUGqz-L2k29" alt="Carmem Lúcia" class="pet-photo">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1tTCq9Rx5FvGj9tbdYgsW5ucUZ8NFzAlp" alt="Luna e Amora" class="pet-photo">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1DwnzMMjdayJ3pSlS6cZWkrS-N6kv6Ikb" alt="Carmem Lúcia" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1p3d3Ir103x7F9-CNTD0D0BUGqz-L2k29" alt="Marco Aurélio, Amora e Kitty" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1tTCq9Rx5FvGj9tbdYgsW5ucUZ8NFzAlp" alt="Marco Aurélio, Amora e Kitty" class="pet-photo">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1DwnzMMjdayJ3pSlS6cZWkrS-N6kv6Ikb" alt="Marco Aurélio, Amora e Kitty" class="pet-photo">
             </div>
             <h3 class="pet-name">Marco Aurélio, Amora e Kitty</h3>
             <p class="testimonial-text">
@@ -899,6 +939,31 @@
             </p>
             <p class="tutor-name">Carmem Lúcia</p>
         </div>
+
+        <!-- Depoimento 7 - Lilica -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1qVZRM_y-yB1DQL5BtRVM-MLQk6GKICS_" alt="Lilica" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Lilica</h3>
+            <p class="testimonial-text">
+                A estadia da Lilica com a titia Sheron foi super tranquila. Nos sentimos muito à vontade de deixar ela pois sabíamos que estaria em boas mãos. Ela sempre nos manteve informada de como ela estava e mandava fotos e informações de tempos em tempos, isso nos deixou muito mais tranquilas. Super recomendo e com toda certeza em nossa próxima viagem estaremos confiando novamente no trabalho dela, obrigada por cuidar da nossa pitoca 🩷
+            </p>
+            <p class="tutor-name">Eduarda</p>
+        </div>
+
+        <!-- Depoimento 8 - Penny e Luna -->
+        <div class="testimonial-card">
+            <div class="pet-photo-container">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1iERUNjDFbT14b7jVQGifAhMu4zmUfDNu" alt="Penny e Luna" class="pet-photo">
+            </div>
+            <h3 class="pet-name">Penny e Luna</h3>
+            <p class="testimonial-text">
+                A Sheron foi a primeira Pet Sitter que contratei, desde o primeiro contato passou confiança e transparência. Nos dias que ficou com nossas gatinhas mandou várias atualizações e até organizou coisas que não havia pedido. Super recomendo o trabalho dela! 🥰❤️
+            </p>
+            <p class="tutor-name">Anna</p>
+        </div>
+
     </div>
 </section>
 
@@ -960,7 +1025,12 @@
     <div class="cta-section">
         <h2>"Viaje com a consciência leve e o coração tranquilo."</h2>
         <p>A nossa diretoria está pronta para receber o seu pet no clube dos VIPs.</p>
-        <a href="https://wa.me/5554992061661" class="btn-cta" target="_blank"><i class="fa-brands fa-whatsapp"></i> Fale diretamente comigo, agora</a>
+        <a href="https://wa.me/5554992061661" class="btn-cta" target="_blank"><i class="fa-brands fa-whatsapp"></i> Fale diretamente comigo, agora, pelo whatsapp</a>
+        <br>
+	<a href="https://www.instagram.com/sheronpetsitter?igsh=MWUyZWxyenVwOWJiYw==" class="instagram-link" target="_blank" rel="noopener noreferrer">
+	    <img src="https://lh3.googleusercontent.com/u/0/d/1G12eQ_OfZTukf28p9X0bAuvF3OCVVZMM" alt="Instagram" class="instagram-icon">
+	    Nos encontre e nos siga no Instagram
+	</a>
     </div>
 
     <footer class="footer-final">
