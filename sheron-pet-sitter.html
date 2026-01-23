@@ -61,7 +61,15 @@
             align-items: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             z-index: 1000;
-            border-bottom: 3px solid var(--azul-claro);
+            border-bottom: 3px solid var(--azul-claro)
+	    align-items: center;
+        }
+
+        .logo-nav-img {
+            height: 50px; /* Ajuste a altura conforme a necessidade do seu cabeçalho */
+            width: auto;
+            margin-right: 10px; /* Espaçamento entre a logo e o texto */
+            vertical-align: middle; /* Alinha a imagem com o texto */
         }
 
         .logo-nav {
@@ -72,6 +80,8 @@
             text-decoration: none;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            display: flex; /* Permite que a imagem e o texto fiquem lado a lado */
+            align-items: center; /* Alinha verticalmente a imagem e o texto dentro do link */
         }
 
         .logo-nav span {
@@ -644,8 +654,11 @@
 <body>
 
     <nav>
-        <a href="#" class="logo-nav">Sheron <span>Pet Sitter</span></a>
-        <div class="menu-links">
+            <a href="#" class="logo-nav">
+                <img src="https://lh3.googleusercontent.com/u/0/d/12hcD72lmJrtOtjReO46xgtNXc6VPVy_e" alt="Sheron Pet Sitter Logo" class="logo-nav-img">
+                Sheron <span>Pet Sitter</span>
+            </a>
+            <div class="menu-links">
             <a href="#diretoria">Diretoria</a>
             <a href="#cultura">Cultura</a>
             <a href="#servicos">Serviços</a>
