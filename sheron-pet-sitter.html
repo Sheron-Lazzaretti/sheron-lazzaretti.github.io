@@ -649,6 +649,88 @@
     }
 }
 
+/* --- CERTIFICADOS --- */
+.cert-card {
+    background: var(--branco);
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--rosa-principal);
+}
+
+.cert-card h3 {
+    font-size: 1.1rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+}
+
+.btn-cert {
+    display: inline-block;
+    background: var(--azul-claro);
+    color: var(--azul-principal);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-cert:hover {
+    background: var(--azul-principal);
+    color: var(--branco);
+}
+
+.btn-cert i {
+    margin-right: 5px;
+}
+
+
+/* --- BOTÃO AVALIAÇÃO GOOGLE --- */
+.google-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    color: var(--texto-escuro);
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 15px;
+}
+
+.google-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    color: var(--azul-principal);
+}
+
+.google-link i.fa-google {
+    color: #4285F4;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .google-link {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+    }
+}
     </style>
 
 <!-- Meta Pixel Code -->
@@ -681,6 +763,7 @@ src="https://www.facebook.com/tr?id=2307872639623490&ev=PageView&noscript=1"
             <a href="#diretoria">Diretoria</a>
             <a href="#cultura">Cultura</a>
             <a href="#servicos">Serviços</a>
+            <a href="#certificados">Certificados</a>
             <a href="#faq">FAQ</a>
         </div>
     </nav>
@@ -793,6 +876,39 @@ src="https://www.facebook.com/tr?id=2307872639623490&ev=PageView&noscript=1"
                     <li><strong>Relatórios Diários:</strong> Feedback detalhado sobre comportamento e bem-estar.</li>
                     <li><strong>Janela de Visualização:</strong> Envio de mídias para sua total tranquilidade.</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CERTIFICADOS -->
+    <section id="certificados">
+        <div class="section-title">
+            <h2>🎓 Qualificações e Certificados</h2>
+        </div>
+        <div class="pain-grid">
+            <div class="cert-card">
+                <h3>Básico de Auxiliar Veterinário</h3>
+                <a href="https://drive.google.com/file/d/1GLoDozUsDLTh_Th3NKUYeHN35XnoCn6U/view" target="_blank" rel="noopener noreferrer" class="btn-cert">
+                    <i class="fas fa-file-pdf"></i> Ver Certificado
+                </a>
+            </div>
+            <div class="cert-card">
+                <h3>Curso de Pet Sitter</h3>
+                <a href="https://drive.google.com/file/d/194IZTyyjA40V67_x70D0VkFyvC3c73Oh/view" target="_blank" rel="noopener noreferrer" class="btn-cert">
+                    <i class="fas fa-file-pdf"></i> Ver Certificado
+                </a>
+            </div>
+            <div class="cert-card">
+                <h3>Primeiros Socorros para Cães e Gatos</h3>
+                <a href="https://drive.google.com/file/d/12KnXsdlm08KbPmY6lEy2u8xktwrYFH7a/view" target="_blank" rel="noopener noreferrer" class="btn-cert">
+                    <i class="fas fa-file-pdf"></i> Ver Certificado
+                </a>
+            </div>
+            <div class="cert-card">
+                <h3>Seu Primeiro Gato</h3>
+                <a href="https://drive.google.com/file/d/1V4XEtELKIjgQtYNVRj-Tb3I2dELOLIbo/view" target="_blank" rel="noopener noreferrer" class="btn-cert">
+                    <i class="fas fa-file-pdf"></i> Ver Certificado
+                </a>
             </div>
         </div>
     </section>
@@ -1063,6 +1179,11 @@ src="https://www.facebook.com/tr?id=2307872639623490&ev=PageView&noscript=1"
 	    <img src="https://lh3.googleusercontent.com/u/0/d/1G12eQ_OfZTukf28p9X0bAuvF3OCVVZMM" alt="Instagram" class="instagram-icon">
 	    Nos encontre e nos siga no Instagram
 	</a>
+        <br>
+        <a href="https://www.google.com/maps/place//@-29.7202938,-53.704444,11z/data=!3m1!4b1!4m3!3m2!1s0x29b18f8f8ef6c997:0x12abbe2875212fb0!12e1?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" class="google-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-google"></i>
+            Deixe sua avaliação no Google
+        </a>
     </div>
 
     <footer class="footer-final">
